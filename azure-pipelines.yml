@@ -9,10 +9,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: cd openapi-generator
-  displayName: 'Move to openapi-generator directory'
-
 - task: Maven@3
   displayName: 'Maven clean'
   inputs:
