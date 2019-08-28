@@ -10,8 +10,28 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: cd openapi-generator
+  displayName: 'Move to openapi-generator directory'
+
+- task: Maven@3
+  displayName: 'Maven clean'
+  inputs:
+    mavenPomFile: 'pom.xml'
+    options: 'clean'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
+         -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/2_0/petstore.yaml \
+         -g csharp \
+         -o ./publishDll
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
