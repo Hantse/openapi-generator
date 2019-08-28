@@ -28,9 +28,5 @@ steps:
       java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
          -i https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/2_0/petstore.yaml \
          -g csharp \
-         -o ./publishDll
+         -o /publishDll
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
