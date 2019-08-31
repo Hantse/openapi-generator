@@ -30,3 +30,10 @@ steps:
          -g csharp \
          -o /publishDll
 
+- task: PublishBuildArtifacts@1
+  displayName: Publish
+  inputs:
+   PathtoPublish: '$(Build.ArtifactStagingDirectory)/publishDll'
+   ArtifactName: 'build_$(Build.BuildNumber)'
+   publishLocation: 'Container'
+
