@@ -33,7 +33,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish
   inputs:
-   PathtoPublish: '$(Build.ArtifactStagingDirectory)/publishDll'
+   PathtoPublish: '$(Build.ArtifactStagingDirectory)'
    ArtifactName: 'build_$(Build.BuildNumber)'
    publishLocation: 'Container'
 
